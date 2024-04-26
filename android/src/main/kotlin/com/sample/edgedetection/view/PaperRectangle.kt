@@ -1,5 +1,6 @@
 package com.sample.edgedetection.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -105,8 +106,8 @@ class PaperRectangle : View {
         tr = corners?.corners?.get(1) ?: Point(size.width * 0.9, size.height * 0.1)
         br = corners?.corners?.get(2) ?: Point(size.width * 0.9, size.height * 0.9)
         bl = corners?.corners?.get(3) ?: Point(size.width * 0.1, size.height * 0.9)
-        ratioX = size.width?.div(paperWidth) ?: 1.0
-        ratioY = size.height?.div(paperHeight) ?: 1.0
+        ratioX = size.width.div(paperWidth)
+        ratioY = size.height.div(paperHeight)
         resize()
         movePoints()
     }
@@ -116,27 +117,28 @@ class PaperRectangle : View {
         return listOf(tl, tr, br, bl)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         rectPaint.color = Color.WHITE
         rectPaint.strokeWidth = 6F
         rectPaint.style = Paint.Style.STROKE
-        canvas?.drawPath(path, rectPaint)
+        canvas.drawPath(path, rectPaint)
 
         rectPaint.color = Color.argb(128, 255, 255, 255)
         rectPaint.strokeWidth = 0F
         rectPaint.style = Paint.Style.FILL
-        canvas?.drawPath(path, rectPaint)
+        canvas.drawPath(path, rectPaint)
 
         if (cropMode) {
-            canvas?.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 20F, circlePaint)
-            canvas?.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 20F, circlePaint)
-            canvas?.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 20F, circlePaint)
-            canvas?.drawCircle(br.x.toFloat(), br.y.toFloat(), 20F, circlePaint)
+            canvas.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 20F, circlePaint)
+            canvas.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 20F, circlePaint)
+            canvas.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 20F, circlePaint)
+            canvas.drawCircle(br.x.toFloat(), br.y.toFloat(), 20F, circlePaint)
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
         if (!cropMode) {
@@ -149,8 +151,8 @@ class PaperRectangle : View {
                 calculatePoint2Move(event.x, event.y)
             }
             MotionEvent.ACTION_MOVE -> {
-                point2Move.x = (event.x - latestDownX) + point2Move.x
-                point2Move.y = (event.y - latestDownY) + point2Move.y
+                point2Move.x += (event.x - latestDownX)
+                point2Move.y += (event.y - latestDownY)
                 movePoints()
                 latestDownY = event.y
                 latestDownX = event.x
