@@ -1,0 +1,41 @@
+PODS:
+  - edge_detection (1.1.3):
+    - Flutter
+    - WeScan
+  - Flutter (1.0.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.1.1):
+    - Flutter
+  - WeScan (3.0.0)
+
+DEPENDENCIES:
+  - edge_detection (from `.symlinks/plugins/edge_detection/ios`)
+  - Flutter (from `Flutter`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - WeScan (from `.symlinks/plugins/edge_detection/ios/WeScan-3.0.0`)
+
+EXTERNAL SOURCES:
+  edge_detection:
+    :path: ".symlinks/plugins/edge_detection/ios"
+  Flutter:
+    :path: Flutter
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  WeScan:
+    :path: ".symlinks/plugins/edge_detection/ios/WeScan-3.0.0"
+
+SPEC CHECKSUMS:
+  edge_detection: ca7942eecdfb4acb1de11cb9300c42242acb5679
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+  WeScan: f50277f7304d146d9ebc4ebdc1b587df84dcdd8b
+
+PODFILE CHECKSUM: 105618c803e92929ecf82cb16eb67d06b7b2dfaf
+
+COCOAPODS: 1.12.1
